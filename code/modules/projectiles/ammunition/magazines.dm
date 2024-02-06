@@ -86,6 +86,14 @@
 	ammo_type = /obj/item/ammo_casing/overgrown
 	max_ammo = 8
 
+//grenade launcher internal mag
+/obj/item/ammo_box/magazine/internal/grenadelaunchercustom
+	name = "grenade launcher internal mag"
+	desc = "how did you get this?"
+	ammo_type = /obj/item/ammo_casing/custom_grenade_casing
+	caliber = "nade"
+	max_ammo = 1
+
 // Shotgun internal mags
 /obj/item/ammo_box/magazine/internal/shot
 	name = "shotgun internal magazine"

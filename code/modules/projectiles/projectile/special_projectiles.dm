@@ -44,6 +44,21 @@
 	explosion(target, -1, 0, 2, 1, 0, flame_range = 3, cause = "[type] fired by [key_name(firer)]")
 	return TRUE
 
+/obj/item/projectile/bullet/customnade
+	name = "custom grenade projectile"
+	desc = "grenade in travel"
+	icon_state = "bolter"
+	alwayslog = TRUE
+	damage = 10
+	flag = "bullet"
+	var/obj/item/grenade/nade = null
+
+/obj/item/projectile/bullet/customnade/on_hit(atom/target, blocked = 0)
+	. = ..()
+	nade.prime()
+	nade.forceMove(get_turf(target))
+//	new nade(get_turf(target))
+
 /obj/item/projectile/temp
 	name = "temperature beam"
 	icon_state = "temp_4"

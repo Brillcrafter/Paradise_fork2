@@ -466,3 +466,25 @@
 	muzzle_flash_range = MUZZLE_FLASH_RANGE_NORMAL
 	muzzle_flash_color = LIGHT_COLOR_DARKRED
 	icon_state = "lasercasing"
+
+/obj/item/ammo_casing/custom_grenade_casing
+	name = "Custom grenade shell casing"
+	desc = "a custom grenade shell casing"
+	icon_state = "testRound"
+	harmful = TRUE
+	projectile_type =  /obj/item/projectile/bullet/customnade
+	var/complete = FALSE
+	caliber = "nade"
+
+/obj/item/ammo_casing/custom_grenade_casing/attackby(obj/item/I, mob/user, params)
+	. = ..()
+	var/obj/item/projectile/bullet/customnade/ND = BB
+	if(istype(I, /obj/item/grenade/plastic))
+		to_chat(user, "<span class='warning'>no plastic explosives</span>")
+		return
+	if(istype(I, /obj/item/grenade))
+		if(ND)
+			I.forceMove(src)
+			ND.nade = I
+			complete = TRUE
+	return
